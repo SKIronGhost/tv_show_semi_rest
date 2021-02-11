@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+        {% load bootstrap4 %}
+        {% bootstrap_css %}
+    </head>
+    <body>
+        <h1 class="m-5">All Shows</h1>
+        <div class="container justify-content-center">
+            <table class="table table-hover table-dark mb-5">
+              <thead class="bg-primary">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Network</th>
+                  <th scope="col">Release Date</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for show in shows %}
+                <tr>
+                  <th scope="row">{{ show.id }}</th>
+                  <td>{{show.title}}</td>
+                  <td>{{show.network}}</td>
+                  <td>{{show.release_date}}</td>
+                  <td><a href="{{ show.id }}">Show</a> | <a href="{{ show.id }}/edit">Edit</a> | <a href="{{ show.id }}/delete">Delete</a></td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            <a role="button" class="btn btn-dark m-2" href="new">Add a New Show</a>
+        </div>
+
+
+
+        {% bootstrap_javascript jquery='full' %}
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+</head>
+<body>
+<a role="button" class="btn btn-secondary m-2" href="/">Go Back</a>
+    <div class="container-fluid row p-5">
+        <div class="container col-6">
+            <h1>Edit Show {{ show.id }}</h1>
+            <form action="/shows/{{ show.id }}/update" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input class="form-control form-control-lg" name="title" value="{{ show.title }}" type="text" id="title">
+                </div>
+                <div class="form-group">
+                    <label for="network">Network</label>
+                    <input class="form-control form-control-lg" name="network" value="{{ show.network }}" type="text" id="network">
+                </div>
+                <div class="form-group">
+                    <label for="release_date">Release Date</label>
+                    <input class="form-control form-control-lg" name="release_date" value='{{ release_date }}' type="date" id="release_date">
+                </div>
+                <div class="form-group">
+                    <label for="desc">Description</label>
+                    <textarea class="form-control form-control-lg" name="desc"  type="textarea" id="desc" rows="4">{{ show.desc }}</textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Update</button>
+                <a href="/shows/{{ show.id }}">Go to Show</a>
+            </form>
+        </div>
+
+
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>

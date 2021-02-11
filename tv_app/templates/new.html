@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+</head>
+<body>
+<a role="button" class="btn btn-secondary m-2" href="/">Go Back</a>
+    <div class="container-fluid row p-5">
+        <div class="container col-6">
+            <h1>Add a New Show</h1>
+            <form action="/shows/create" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input class="form-control form-control-lg" name="title" type="text" id="title">
+                </div>
+                <div class="form-group">
+                    <label for="network">Network</label>
+                    <input class="form-control form-control-lg" name="network" type="text" id="network">
+                </div>
+                <div class="form-group">
+                    <label for="release_date">Release Date</label>
+                    <input class="form-control form-control-lg" name="release_date" type="date" id="release_date">
+                </div>
+                <div class="form-group">
+                    <label for="desc">Description</label>
+                    <textarea class="form-control form-control-lg" name="desc" type="textarea" id="desc" rows="4"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Create</button>
+            </form>
+        </div>
+
+
+    {% bootstrap_javascript jquery='full' %}
+</body>
+</html>
